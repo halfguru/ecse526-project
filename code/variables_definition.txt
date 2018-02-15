@@ -1,0 +1,35 @@
+SpeciesRecord: structure of size corresponding to the number of species
+	SpeciesRecord.id: id of the specie
+	SpeciesRecord.nIndividuals: number of individuals in the specie
+	SpeciesRecord.generationRecord: matrix with 4 rows and <number of generations in the specie> columns
+		SpeciesRecord.generationRecord(1,:): index of generation
+		SpeciesRecord.generationRecord(2,:): mean raw fitness of generation
+		SpeciesRecord.generationRecord(3,:): max raw fitness of generation
+		SpeciesRecord.generationRecord(4,:): index of individual in population which has produced max raw fitness
+
+Population : structure of size corresponding to the number of individuals in population
+	Population.nodeGenes: matrix with 4 rows and <input nodes + output nodes + hidden nodes + 1 bias node> columns
+		Population.nodeGenes(1,:): consecutive node ID
+		Population.nodeGenes(2,:): note type (1 = input, 2 = output, 3 = hidden, 4 = bias)
+		Population.nodeGenes(3,:): note input state
+		Population.nodeGenes(4,:): node output state
+	Population.connectionGenes: matrix with 5 rows and <number of connections> columns
+		Population.connectionGenes(1,:): innovation ID
+		Population.connectionGenes(2,:): connection from
+		Population.connectionGenes(3,:): connection to
+		Population.connectionGenes(4,:): weight
+		Population.connectionGenes(5,:): enable bit
+	Population.fitness: fitness of individual
+	Population.species: specie ID of individual
+
+innovationRecord: matrix with 5 rows and  <number of innovations> columns
+	innovationRecord(1,:): innovation ID
+	innovationRecord(2,:): <connection from node> for this innovation
+	innovationRecord(3,:): <connection to node> for this innovation
+	innovationRecord(4,:): the new node ID
+	innovationRecord(5,:): index of generation this innovation occured 
+
+matExistingAndPropagSpecies: matrix with 3 rows and <number of species in the current generation> columns
+	matExistingAndPropagSpecies(1,:): specie's ID
+	matExistingAndPropagSpecies(2,:): alloted number of offsprings
+	matExistingAndPropagSpecies(3,:): actual number of offsprings
